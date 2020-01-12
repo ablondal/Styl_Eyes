@@ -24,6 +24,7 @@ import java.util.Date;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,6 +38,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -176,7 +178,27 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                 in.close();
 
                 // print result
-                System.out.println(response.toString());
+
+                JSONObject stupidJson;
+                JSONArray predictions;
+                HashSet<String> labels = new HashSet<>();
+               // System.out.println(response.toString());
+                try {
+
+                    stupidJson = new JSONObject(response.toString());
+                    predictions = stupidJson.getJSONArray("predictions");
+
+                    for (int i = 0; i < predictions.length(); i++){
+                        labels.add(predictions.getJSONObject(i).getString("tagName"));
+                        System.out.println(predictions.getJSONObject(i).getString("tagName"));
+                    }
+
+
+                } catch (Throwable t) {
+
+
+                }
+
 
             }
 
