@@ -263,6 +263,7 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
     protected void onPostExecute(Boolean result) {
         System.out.println("done?");
+        // ADD SWITCH ACTIVITY IN NEW PAGE
     }
     public String loadJSONFromAsset(Context context) {
         String json = null;

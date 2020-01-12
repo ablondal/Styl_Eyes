@@ -105,14 +105,11 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="268dp"
-        android:layout_marginLeft="268dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginRight="17dp"
         android:onClick="takePhoto"
         android:text="Style Me"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -121,8 +118,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.978" />
-
+        app:layout_constraintVertical_bias="0.951" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView2"
