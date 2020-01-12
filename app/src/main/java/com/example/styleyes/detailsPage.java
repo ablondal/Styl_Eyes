@@ -23,6 +23,8 @@ public class detailsPage extends AppCompatActivity {
                 startActivity(d);
             }
         });
+        JSONAsyncTask j = new JSONAsyncTask();
+        System.out.println(j.getAccessoriesCount("hat"));
     }
 
 

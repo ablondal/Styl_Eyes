@@ -3,7 +3,9 @@ package com.example.styleyes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,7 +50,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 import java.util.Scanner;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -58,13 +63,16 @@ public class MainActivity extends AppCompatActivity {
 
     static final String Endpoint = "https://francisca.cognitiveservices.azure.com/";
     static String currentPhotoPath;
+    private  static MainActivity activity = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-        //Buttons
+        activity = this;
+
         //takes user to details page
         final ImageButton detailButton = findViewById(R.id.detailButton);
         detailButton.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +155,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(d);
 
         }
+    }
+
+    public static Context context()
+    {
+        return activity.getApplicationContext();
     }
 
 }
@@ -263,33 +276,49 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
     protected void onPostExecute(Boolean result) {
         System.out.println("done?");
     }
-
-    private int getAccessoriesCount(String piece) {
-        JSONObject stupidJson;
-//        JSONArray shoes;
-//        JSONArray neckwear;
-//        JSONArray hat;
-        JSONArray pieceArray;
-        File file = new File("accessories.json");
+    public String loadJSONFromAsset(Context context) {
+        String json = null;
         try {
-            Scanner myReader = new Scanner(file);
-            String buffer = "";
-            while (myReader.hasNextLine()) {
-                buffer = myReader.nextLine();
-            }
-            try {
-                stupidJson = new JSONObject(buffer);
-//                shoes = stupidJson.getJSONArray("shoes");
-//                neckwear = stupidJson.getJSONArray("neckwear");
-//                hat = stupidJson.getJSONArray("hat");
-                pieceArray = stupidJson.getJSONArray(piece);
-                return pieceArray.length();
-            } catch (Throwable t) {
+            InputStream is = context.getAssets().open("accessories.json");
 
-            }
+            int size = is.available();
 
-        } catch (FileNotFoundException e){
+            byte[] buffer = new byte[size];
 
+            is.read(buffer);
+
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+
+    }
+
+    public JSONObject getAccessories() {
+        JSONObject stupidJson;
+        try {
+            stupidJson = new JSONObject(loadJSONFromAsset(MainActivity.context()));
+            return stupidJson;
+        } catch (Throwable t) {
+
+        }
+        return null;
+    }
+
+    public int getAccessoriesCount(String piece) {
+        JSONObject stupidJson = getAccessories();
+        JSONArray pieceArray;
+        try {
+            pieceArray = stupidJson.getJSONArray(piece);
+            return pieceArray.length();
+        } catch (Throwable t) {
+            System.out.println("no array found for " + piece);
         }
         return 0;
 
