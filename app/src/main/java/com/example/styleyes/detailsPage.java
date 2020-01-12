@@ -16,7 +16,7 @@ public class detailsPage extends AppCompatActivity {
         setContentView(R.layout.activity_details_page);
         getSupportActionBar().hide();
 
-        JSONAsyncTask j = new JSONAsyncTask();
+        JSONAsyncTask j = new JSONAsyncTask(MainActivity.context());
         int numhat = j.getAccessoriesCount("hat");
         int numscarves = j.getAccessoriesCount("neckwear");
         int numshoes = j.getAccessoriesCount("shoes");

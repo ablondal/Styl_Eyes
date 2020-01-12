@@ -6,6 +6,7 @@
       "piece": "hat"},
     { "id": "blackhat.jpg",
       "color": "black",
+      "pattern": "solid",
       "piece": "hat"},
     { "id": "greyhat.jpg",
       "color": "grey",
