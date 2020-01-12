@@ -156,9 +156,9 @@ class getFashionAdvice {
             accessory = "scarf1";
         }else if (lightshoe) {
             if ( possiblecols.size() > 2 ) {
-                accessory = "shoes3";
-            }else{
                 accessory = "shoes1";
+            }else{
+                accessory = "shoes3";
             }
         }else if (patterncount==0) {
             if (possiblecols.contains("red")) {
