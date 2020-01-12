@@ -6,11 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="225dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/name" />
+
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView3"
         android:layout_width="400dp"
-        android:layout_height="208dp"
-        android:layout_marginTop="200dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="130dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -19,7 +35,7 @@
 
             <ImageView
                 android:id="@+id/hat1"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:cropToPadding="true"
@@ -27,7 +43,7 @@
 
             <ImageView
                 android:id="@+id/hat2"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:cropToPadding="true"
@@ -35,49 +51,49 @@
 
             <ImageView
                 android:id="@+id/hat3"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/greyhat" />
 
             <ImageView
                 android:id="@+id/hat4"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/redhat" />
 
             <ImageView
                 android:id="@+id/hat5"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/yellowhat" />
 
             <ImageView
                 android:id="@+id/hat6"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/bluecap" />
 
             <ImageView
                 android:id="@+id/hat7"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/pinkcap" />
 
             <ImageView
                 android:id="@+id/hat8"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/redcap" />
 
             <ImageView
                 android:id="@+id/hat9"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/whitecap" />
@@ -107,8 +123,8 @@
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView2"
         android:layout_width="0dp"
-        android:layout_height="149dp"
-        android:layout_marginTop="76dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -119,8 +135,8 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/scarf"
-                android:layout_width="200dp"
+                android:id="@+id/scarf1"
+                android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:cropToPadding="true"
@@ -128,7 +144,7 @@
 
             <ImageView
                 android:id="@+id/scarf2"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:cropToPadding="true"
@@ -136,7 +152,7 @@
 
             <ImageView
                 android:id="@+id/scarf3"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:cropToPadding="true"
@@ -144,7 +160,7 @@
 
             <ImageView
                 android:id="@+id/scarf4"
-                android:layout_width="200dp"
+                android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:cropToPadding="true"
@@ -153,20 +169,96 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="225dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <HorizontalScrollView
+        android:layout_width="399dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/shoes1"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/shoes1" />
+
+            <ImageView
+                android:id="@+id/shoes2"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/shoes2" />
+
+            <ImageView
+                android:id="@+id/shoes3"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/shoes3" />
+
+            <ImageView
+                android:id="@+id/shoes4"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/shoes4" />
+
+            <ImageView
+                android:id="@+id/shoes5"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/shoes5" />
+
+            <ImageView
+                android:id="@+id/shoes6"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:cropToPadding="true"
+                app:srcCompat="@drawable/shoes6" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Your Accessories"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:typeface="serif"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="8dp"
+        android:tint="@color/colorPrimary"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/Logo"
+        app:layout_constraintEnd_toStartOf="@+id/Logo"
+        app:layout_constraintTop_toTopOf="@+id/Logo"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/name" />
+        app:srcCompat="@drawable/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
