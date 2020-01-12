@@ -15,9 +15,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_TAKE_PHOTO = 1;
+    static final String AZURE_CUSTOMVISION_PREDICTION_API_KEY = "8d1da701ca294e828465a5961290fb4d";
+    static final String AZURE_CUSTOMVISION_ENDPOINT = "https://francisca-prediction.cognitiveservices.azure.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
