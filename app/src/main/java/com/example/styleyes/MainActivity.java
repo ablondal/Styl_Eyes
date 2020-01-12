@@ -163,6 +163,8 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
     }
 
+    ArrayList<String> tags = new ArrayList<>();
+
     @Override
     protected Boolean doInBackground(String... urls) {
         try {
@@ -215,7 +217,7 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                         labels.add(predictions.getJSONObject(i).getString("tagName"));
                         System.out.println(predictions.getJSONObject(i).getString("tagName"));
                     }
-
+                    tags = new ArrayList<String>(labels);
 
                 } catch (Throwable t) {
 
@@ -248,6 +250,9 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
         return false;
     }
 
+    public ArrayList<String> getTags() {
+        return tags;
+    }
 
     private byte[] GetImageAsByteArray() {
         System.out.println("fetching image as byte array from file system");
