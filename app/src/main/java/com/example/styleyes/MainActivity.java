@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "Styleyes_" + timeStamp + "_";
+        String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
@@ -209,12 +209,13 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                         System.out.println(predictions.getJSONObject(i).getString("tagName"));
                     }
 
+
                 } catch (Throwable t) {
 
 
                 }
             } else {
-                System.out.println("GET request not worked");
+                System.out.println("Could not connect to cloud, unable to provide feedback at this time.");
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(
                         con.getInputStream()));
@@ -258,5 +259,8 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
         System.out.println("done?");
     }
 
+    private HashSet<String> analyze(HashSet<String> tags) {
 
+        return null;
+    }
 }
