@@ -251,8 +251,6 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
     protected void onPostExecute(Boolean result) {
         System.out.println("done?");
-
-
     }
 
     public int getAccessoriesCount(String piece) {
