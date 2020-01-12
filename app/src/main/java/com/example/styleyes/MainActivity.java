@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
 
@@ -31,6 +32,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,6 +55,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -80,17 +84,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent a = new Intent(MainActivity.this, detailsPage.class);
                 startActivity(a);
-            }
-        });
-
-        //takes user to add accessories
-        final ImageButton plusButton = findViewById(R.id.plusButton);
-        plusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent b = new Intent(MainActivity.this, plusPage.class);
-                startActivity(b);
-
             }
         });
 
@@ -149,10 +142,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             JSONAsyncTask j = new JSONAsyncTask();
             j.execute();
-
-            //shows results page
-            Intent d = new Intent(MainActivity.this, resultsPage.class);
-            startActivity(d);
 
         }
     }
