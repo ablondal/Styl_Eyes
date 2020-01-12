@@ -27,8 +27,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
-    // https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training
-   // implementation group: 'com.microsoft.azure.cognitiveservices', name: 'azure-cognitiveservices-customvision-training', version: '1.0.2-beta'
+    implementation group: 'com.microsoft.azure.cognitiveservices', name: 'azure-cognitiveservices-customvision-prediction', version: '1.0.2-beta'
+    annotationProcessor 'com.microsoft.azure:azure-annotations:1.2.0'
+    // implementation group: 'com.microsoft.azure.cognitiveservices', name: 'azure-cognitiveservices-customvision-training', version: '1.0.2-beta'
 
     // https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction
     //implementation group: 'com.microsoft.azure.cognitiveservices', name: 'azure-cognitiveservices-customvision-prediction', version: '1.0.2-beta'
