@@ -19,8 +19,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="378dp"
-        android:layout_height="307dp"
+        android:layout_width="340dp"
+        android:layout_height="302dp"
         android:text="Fashion Advice Placeholder"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="18sp"
@@ -55,9 +55,10 @@
         android:id="@+id/imageView10"
         android:layout_width="347dp"
         android:layout_height="368dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/pic"
-        tools:layout_editor_absoluteY="302dp" />
+        app:srcCompat="@drawable/pic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
