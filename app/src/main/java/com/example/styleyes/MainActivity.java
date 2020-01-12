@@ -67,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
     static final String Endpoint = "https://francisca.cognitiveservices.azure.com/";
     static String currentPhotoPath;
     private  static MainActivity activity = null;
+    private static JSONAsyncTask asyncTask = null;
 
+    boolean resultsReady = false;
+    String[] tags;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,8 +117,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         System.out.println("Before Async");
-        /*JSONAsyncTask j = new JSONAsyncTask();
-        j.execute();*/
+
     }
 
 
@@ -140,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Printing on result");
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             JSONAsyncTask j = new JSONAsyncTask();
+            asyncTask = j;
             j.execute();
 
         }
@@ -148,6 +151,11 @@ public class MainActivity extends AppCompatActivity {
     public static Context context()
     {
         return activity.getApplicationContext();
+    }
+
+    public static JSONAsyncTask getAsyncTask()
+    {
+        return asyncTask;
     }
 
 }
@@ -162,13 +170,15 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
     }
 
+    ArrayList<String> tags = new ArrayList<>();
+
     @Override
     protected Boolean doInBackground(String... urls) {
         try {
 
             byte[] testImage = GetImageAsByteArray();
 
-            String url = "https://francisca.cognitiveservices.azure.com/customvision/v3.0/Prediction/e5a5b590-a74a-4f0f-aeda-d2275684c8e4/detect/iterations/Iteration5/image";
+            String url = "https://francisca.cognitiveservices.azure.com/customvision/v3.0/Prediction/e5a5b590-a74a-4f0f-aeda-d2275684c8e4/detect/iterations/Iteration6/image";
 
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -211,10 +221,13 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                     predictions = stupidJson.getJSONArray("predictions");
 
                     for (int i = 0; i < predictions.length(); i++){
-                        labels.add(predictions.getJSONObject(i).getString("tagName"));
-                        System.out.println(predictions.getJSONObject(i).getString("tagName"));
-                    }
+                        if (predictions.getJSONObject(i).getDouble("probability") > 0.05){
+                            labels.add(predictions.getJSONObject(i).getString("tagName"));
+                            System.out.println(predictions.getJSONObject(i).getString("tagName"));
+                        }
 
+                    }
+                    tags = new ArrayList<String>(labels);
 
                 } catch (Throwable t) {
 
@@ -235,9 +248,6 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
                 // print result
 
-
-
-
             }
 
 
@@ -247,6 +257,9 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
         return false;
     }
 
+    public ArrayList<String> getTags() {
+        return tags;
+    }
 
     private byte[] GetImageAsByteArray() {
         System.out.println("fetching image as byte array from file system");
@@ -265,6 +278,7 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
         System.out.println("done?");
         // ADD SWITCH ACTIVITY IN NEW PAGE
     }
+
     public String loadJSONFromAsset(Context context) {
         String json = null;
         try {
