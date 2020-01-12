@@ -2,8 +2,15 @@ package com.example.styleyes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,23 +25,44 @@ public class resultsPage extends AppCompatActivity {
         setContentView(R.layout.activity_results_page);
         JSONAsyncTask j = MainActivity.getAsyncTask();
         getSupportActionBar().hide();
+
+        ArrayList<String> tags = MainActivity.getAsyncTask().getTags();
+
+//        getFashionAdvice.setTags(tags);
+        String advice = getFashionAdvice.FashionEyes(tags);
+        String arr[] = advice.split(" ", 3);
+        File imgFile = new File(arr[0] + ".jpg");
+        InputStream is;
+        ImageView piece1 = (ImageView) findViewById(R.id.sugAccessory);
+        try {
+            is = getAssets().open(arr[0] + ".jpg");
+            piece1.setImageDrawable(Drawable.createFromStream(is, null));
+        } catch (Throwable t){
+
+        }
+
+        TextView tv = findViewById(R.id.textView);
+        tv.setText(arr[2]);
+//        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//        piece1.setImageBitmap(myBitmap);
+//        piece1.setImageDrawable(R.id.);
     }
 }
 
 
 class getFashionAdvice {
 
-    String[] tags;
+//    ArrayList<String> tags = new ArrayList<>();
+//
+//    public void setTags(ArrayList<String> t) {
+//        tags = t;
+//    }
 
-    public void setTags(String[] t) {
-        tags = t;
-    }
-
-    public String FashionEyes() {
+    public static String FashionEyes(ArrayList<String> tags) {
         // In here, the tags are analyzed, and a suggestion string is given
 
         // Tags as a List Object
-        List<String> tag_list = Arrays.asList(tags);
+        ArrayList<String> tag_list = tags;
 
         // Output string
         String advice = "";
@@ -153,7 +181,7 @@ class getFashionAdvice {
         }
 
 
-        return accessory + ":" + advice;
+        return accessory + " : " + advice;
     }
 
 }
