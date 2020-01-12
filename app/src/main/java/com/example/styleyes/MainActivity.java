@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         System.out.println("Printing on result");
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            JSONAsyncTask j = new JSONAsyncTask();
+            JSONAsyncTask j = new JSONAsyncTask(context());
             asyncTask = j;
             j.execute();
 
@@ -169,6 +169,11 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
     protected void onPreExecute() {
         super.onPreExecute();
 
+    }
+
+    Context context;
+    public JSONAsyncTask(Context context) {
+        this.context = context.getApplicationContext();
     }
 
     ArrayList<String> tags = new ArrayList<>();
@@ -275,8 +280,17 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
         return byteArray;
     }
 
-    protected void onPostExecute(Boolean result) {
-        System.out.println("done?");
+    @Override
+    protected void onPostExecute(Boolean aBoolean) {
+        super.onPostExecute(aBoolean);
+//        MainActivity.ProgressBar
+        Intent z = new Intent(context, resultsPage.class);
+        z.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        MainActivity.context().startActivity(z);
+
+//        z.setClass(MainActivity.context(),resultsPage.class);
+//        MainActivity.context().startActivity(z);
+        context.startActivity(z);
     }
 
     public String loadJSONFromAsset(Context context) {

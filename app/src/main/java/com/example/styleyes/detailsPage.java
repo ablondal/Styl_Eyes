@@ -23,7 +23,7 @@ public class detailsPage extends AppCompatActivity {
                 startActivity(d);
             }
         });
-        JSONAsyncTask j = new JSONAsyncTask();
+        JSONAsyncTask j = new JSONAsyncTask(MainActivity.context());
         System.out.println(j.getAccessoriesCount("hat"));
     }
 
