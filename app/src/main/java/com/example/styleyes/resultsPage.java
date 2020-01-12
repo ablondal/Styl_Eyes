@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -68,7 +69,7 @@ class getFashionAdvice {
             lightshoe = true;
         }
 
-        List<String> possiblecols;
+        List<String> possiblecols = new ArrayList<>();
         possiblecols.add("blue");
         possiblecols.add("green");
         possiblecols.add("orange");
@@ -131,7 +132,7 @@ class getFashionAdvice {
                 accessory = "shoes1";
             }
         }else if (patterncount==0) {
-            if possiblecols.contains("red") {
+            if (possiblecols.contains("red")) {
                 accessory = "floral";
             }else{
                 accessory = "floral2";
