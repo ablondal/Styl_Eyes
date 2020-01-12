@@ -23,6 +23,8 @@ import java.util.Date;
 
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,6 +58,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
+        //Buttons
+        //takes user to details page
+        final ImageButton detailButton = findViewById(R.id.detailButton);
+        detailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(MainActivity.this, detailsPage.class);
+                startActivity(a);
+            }
+        });
+
+        //takes user to add accessories
+        final ImageButton plusButton = findViewById(R.id.plusButton);
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent b = new Intent(MainActivity.this, plusPage.class);
+                startActivity(b);
+
+            }
+        });
+
+
     }
 
     /** Called when the user clicks the "Take photo button" **/
@@ -91,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        String imageFileName = "Styleyes_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
@@ -110,6 +136,11 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             JSONAsyncTask j = new JSONAsyncTask();
             j.execute();
+
+            //shows results page
+            Intent d = new Intent(MainActivity.this, resultsPage.class);
+            startActivity(d);
+
         }
     }
 
@@ -178,7 +209,6 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                         System.out.println(predictions.getJSONObject(i).getString("tagName"));
                     }
 
-
                 } catch (Throwable t) {
 
 
@@ -227,4 +257,6 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
     protected void onPostExecute(Boolean result) {
         System.out.println("done?");
     }
+
+
 }
