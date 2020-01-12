@@ -221,8 +221,11 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                     predictions = stupidJson.getJSONArray("predictions");
 
                     for (int i = 0; i < predictions.length(); i++){
-                        labels.add(predictions.getJSONObject(i).getString("tagName"));
-                        System.out.println(predictions.getJSONObject(i).getString("tagName"));
+                        if (predictions.getJSONObject(i).getDouble("probability") > 0.05){
+                            labels.add(predictions.getJSONObject(i).getString("tagName"));
+                            System.out.println(predictions.getJSONObject(i).getString("tagName"));
+                        }
+
                     }
                     tags = new ArrayList<String>(labels);
 
@@ -244,9 +247,6 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                 in.close();
 
                 // print result
-
-
-
 
             }
 
