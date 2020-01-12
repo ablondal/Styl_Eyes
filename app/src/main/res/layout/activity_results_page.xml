@@ -32,8 +32,8 @@
 
     <ImageView
         android:id="@+id/sugAccessory"
-        android:layout_width="268dp"
-        android:layout_height="206dp"
+        android:layout_width="206dp"
+        android:layout_height="156dp"
         android:layout_marginBottom="180dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Suggested Accessory"
+        android:text="You would look amazing with this!"
         app:layout_constraintBottom_toTopOf="@+id/sugAccessory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/imageView6" />
@@ -55,8 +55,9 @@
         android:id="@+id/imageView10"
         android:layout_width="347dp"
         android:layout_height="368dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/pic"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="299dp" />
+        tools:layout_editor_absoluteY="302dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
