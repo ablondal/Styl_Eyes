@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
 
@@ -50,6 +51,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -134,13 +136,8 @@ public class MainActivity extends AppCompatActivity {
             JSONAsyncTask j = new JSONAsyncTask();
             j.execute();
 
-            //shows results page
-            Intent d = new Intent(MainActivity.this, resultsPage.class);
-            startActivity(d);
-
         }
     }
-
 }
 
 
@@ -254,6 +251,8 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
     protected void onPostExecute(Boolean result) {
         System.out.println("done?");
+
+
     }
 
     public int getAccessoriesCount(String piece) {
