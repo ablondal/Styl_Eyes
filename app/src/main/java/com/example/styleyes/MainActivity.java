@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     static final String Endpoint = "https://francisca.cognitiveservices.azure.com/";
     static String currentPhotoPath;
     private  static MainActivity activity = null;
+    private static JSONAsyncTask asyncTask = null;
 
 
     @Override
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Printing on result");
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             JSONAsyncTask j = new JSONAsyncTask();
+            asyncTask = j;
             j.execute();
 
         }
@@ -149,6 +151,11 @@ public class MainActivity extends AppCompatActivity {
     public static Context context()
     {
         return activity.getApplicationContext();
+    }
+
+    public static JSONAsyncTask getAsyncTask()
+    {
+        return asyncTask;
     }
 
 }
