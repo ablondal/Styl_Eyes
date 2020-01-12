@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     /** Called when the user clicks the "Take photo button" **/
@@ -255,7 +256,7 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
         System.out.println("done?");
     }
 
-    private int getAccessoriesCount(String piece) {
+    public int getAccessoriesCount(String piece) {
         JSONObject stupidJson;
 //        JSONArray shoes;
 //        JSONArray neckwear;
@@ -276,11 +277,11 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
                 pieceArray = stupidJson.getJSONArray(piece);
                 return pieceArray.length();
             } catch (Throwable t) {
-
+                System.out.println("failed to read JSON");
             }
 
         } catch (FileNotFoundException e){
-
+            System.out.println("file not found");
         }
         return 0;
 
