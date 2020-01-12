@@ -164,25 +164,10 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
                 // print result
                 System.out.println(response.toString());
-            } else {
-                System.out.println("GET request not worked");
-
-                BufferedReader in = new BufferedReader(new InputStreamReader(
-                        con.getInputStream()));
-                String inputLine;
-                StringBuffer response = new StringBuffer();
-
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-
-                // print result
-
                 JSONObject stupidJson;
                 JSONArray predictions;
                 HashSet<String> labels = new HashSet<>();
-               // System.out.println(response.toString());
+                // System.out.println(response.toString());
                 try {
 
                     stupidJson = new JSONObject(response.toString());
@@ -198,6 +183,22 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
 
                 }
+            } else {
+                System.out.println("GET request not worked");
+
+                BufferedReader in = new BufferedReader(new InputStreamReader(
+                        con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                // print result
+
+
 
 
             }
