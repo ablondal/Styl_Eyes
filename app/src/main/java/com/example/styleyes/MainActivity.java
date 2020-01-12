@@ -25,6 +25,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
         //Buttons
         //takes user to details page
         final ImageButton detailButton = findViewById(R.id.detailButton);
@@ -69,18 +72,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(a);
             }
         });
-
-        //takes user to add accessories
-        final ImageButton plusButton = findViewById(R.id.plusButton);
-        plusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent b = new Intent(MainActivity.this, plusPage.class);
-                startActivity(b);
-
-            }
-        });
-
 
     }
 

@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".resultsPage"></activity>
-        <activity android:name=".plusPage" />
         <activity android:name=".detailsPage" />
         <activity android:name=".MainActivity">
             <intent-filter>
