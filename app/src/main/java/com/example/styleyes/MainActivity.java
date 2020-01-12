@@ -58,7 +58,6 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 
-
 public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_TAKE_PHOTO = 1;

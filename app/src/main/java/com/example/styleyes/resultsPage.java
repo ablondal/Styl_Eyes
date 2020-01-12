@@ -17,6 +17,7 @@ public class resultsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_page);
         JSONAsyncTask j = MainActivity.getAsyncTask();
+        getSupportActionBar().hide();
     }
 }
 
