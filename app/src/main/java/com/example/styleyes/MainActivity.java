@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
     private  static MainActivity activity = null;
     private static JSONAsyncTask asyncTask = null;
 
+    boolean resultsReady = false;
+    String[] tags;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +118,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         System.out.println("Before Async");
-        /*JSONAsyncTask j = new JSONAsyncTask();
-        j.execute();*/
+
     }
 
 
@@ -178,7 +179,7 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
 
             byte[] testImage = GetImageAsByteArray();
 
-            String url = "https://francisca.cognitiveservices.azure.com/customvision/v3.0/Prediction/e5a5b590-a74a-4f0f-aeda-d2275684c8e4/detect/iterations/Iteration5/image";
+            String url = "https://francisca.cognitiveservices.azure.com/customvision/v3.0/Prediction/e5a5b590-a74a-4f0f-aeda-d2275684c8e4/detect/iterations/Iteration6/image";
 
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -277,6 +278,7 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
     protected void onPostExecute(Boolean result) {
         System.out.println("done?");
     }
+
     public String loadJSONFromAsset(Context context) {
         String json = null;
         try {

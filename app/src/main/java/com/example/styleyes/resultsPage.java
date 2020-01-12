@@ -13,3 +13,9 @@ public class resultsPage extends AppCompatActivity {
         JSONAsyncTask j = MainActivity.getAsyncTask();
     }
 }
+
+
+class getFashionAdvice {
+
+
+}
