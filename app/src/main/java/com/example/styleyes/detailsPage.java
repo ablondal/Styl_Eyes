@@ -7,13 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 public class detailsPage extends AppCompatActivity {
 
     @Override
@@ -30,9 +23,9 @@ public class detailsPage extends AppCompatActivity {
                 startActivity(d);
             }
         });
-
         JSONAsyncTask j = new JSONAsyncTask();
         System.out.println(j.getAccessoriesCount("hat"));
     }
+
 
 }
