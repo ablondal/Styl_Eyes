@@ -16,9 +16,12 @@ import android.view.View;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import android.graphics.BitmapFactory;
@@ -43,8 +46,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Scanner;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -250,7 +255,72 @@ class JSONAsyncTask extends AsyncTask<String, Void, Boolean> {
         System.out.println("done?");
     }
 
-    private HashSet<String> analyze(HashSet<String> tags) {
+    private int getAccessoriesCount(String piece) {
+        JSONObject stupidJson;
+//        JSONArray shoes;
+//        JSONArray neckwear;
+//        JSONArray hat;
+        JSONArray pieceArray;
+        File file = new File("accessories.json");
+        try {
+            Scanner myReader = new Scanner(file);
+            String buffer = "";
+            while (myReader.hasNextLine()) {
+                buffer = myReader.nextLine();
+            }
+            try {
+                stupidJson = new JSONObject(buffer);
+//                shoes = stupidJson.getJSONArray("shoes");
+//                neckwear = stupidJson.getJSONArray("neckwear");
+//                hat = stupidJson.getJSONArray("hat");
+                pieceArray = stupidJson.getJSONArray(piece);
+                return pieceArray.length();
+            } catch (Throwable t) {
+
+            }
+
+        } catch (FileNotFoundException e){
+
+        }
+        return 0;
+
+    }
+    private ArrayList<String> analyze(HashSet<String> tags) {
+        HashSet<String> colors = new HashSet<>();
+        colors.add("black");
+        colors.add("blue");
+        colors.add("brown");
+        colors.add("green");
+        colors.add("grey");
+        colors.add("orange");
+        colors.add("pink");
+        colors.add("purple");
+        colors.add("red");
+        colors.add("white");
+        colors.add("yellow");
+
+        HashSet<String> patterns = new HashSet<>();
+        patterns.add("knit");
+        patterns.add("stripes");
+        patterns.add("Checkered");
+        patterns.add("dots");
+        patterns.add("floral");
+
+        HashSet<String> warmth = new HashSet<>();
+        warmth.add("long sleeve");
+        warmth.add("sleeveless");
+        warmth.add("jacket");
+        warmth.add("knit");
+
+        String colorAdvice;
+        String patternAdvice;
+        String warmthAdvice;
+
+        Iterator<String> i = tags.iterator();
+        while (i.hasNext()) {
+//            i.next()
+        }
+
 
         return null;
     }
